@@ -1,22 +1,26 @@
 [
     {
-        "id" : 1,
-        "name" : "Dế mền phiêu lưu ký",
-        "case" : 2
+        "id": 1,
+        "name": "Dế mền phiêu lưu ký",
+        "case": 2,
+        "available": true
     },
     {
-        "id" : 2,
-        "name" : "Công chúa ngủ trong rừng",
-        "case" : 3
+        "id": 2,
+        "name": "Công chúa ngủ trong rừng",
+        "case": 3,
+        "available": true
     },
     {
-        "id" : 3,
-        "name" : "Ai đã đặt tên cho dòng sông",
-        "case" : 2
+        "id": 3,
+        "name": "Ai đã đặt tên cho dòng sông",
+        "case": 2,
+        "available": true
     },
     {
-        "id" : 4,
-        "name" : "Báo tuổi trẻ số 1, năm 2019",
-        "case" : 1
+        "id": 4,
+        "name": "Báo tuổi già số 1, năm 2019",
+        "case": 1,
+        "available": true
     }
 ]

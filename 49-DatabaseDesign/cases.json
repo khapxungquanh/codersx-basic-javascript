@@ -1,18 +1,18 @@
 [
     {
-        "id" : 1,
-        "name" : "Báo tổng hợp"
+        "id": 1,
+        "name": "Báo tổng hợp"
     },
     {
-        "id" : 2,
-        "name" : "Tủ sách Tham khảo" 
+        "id": 2,
+        "name": "Tủ sách Tham khảo"
     },
     {
-        "id" : 3,
-        "name" : "Tủ sách Ngôn tình"
+        "id": 3,
+        "name": "Tủ sách Ngôn tình"
     },
     {
-        "id" : 4,
-        "name" : "Tủ sách hạt giổng tâm hồn"
+        "id": 4,
+        "name": "Tủ sách hạt giổng tâm hồn"
     }
 ]
