@@ -86,9 +86,10 @@ function Book(id, name, ncase, available) {
 	this.case = ncase;
 	this.available = available;
 }
-function LoanBook(id, playerid, date = moment()) {
+function LoanBook(id, days, playerid, date = moment()) {
 	this.id = id;
 	this.playerid = playerid;
+	this.days = days; // day to return book back
 	this.date = date;
 }
 
@@ -233,8 +234,12 @@ function showBook(bookID) {
 			console.log('Sách mà bạn chọn không tồn tại hoặc đã được mượn bởi người khác.');
 		}
 		else {
+			var days;
+			while(days < 3 || days > 30) {
+				days = Number(readlineSync.question('Nhập số  ngày mượn sách (tối thiếu 3 ngày, tối đa 30 ngày):'));
+			}
 			console.log('Bạn đã mượn thành công cuốn ' + bookData[arrayIndex].name);
-			loanBooksData.push(new LoanBook(bookID, userData[userID].id));
+			loanBooksData.push(new LoanBook(bookID, days, userData[userID].id));
 			bookData[arrayIndex].available = false;
 			saveData();
 			console.log('[Đang chuyển hướng đến trang chủ trong 1 giây]');
@@ -273,11 +278,12 @@ function myLoanBooks() {
 			return [
 				value.id,
 				bookData[idBookToIndex(value.id)].name,
-				moment(value.date).format('MMMM Do YYYY, h:mm:ss a')
+				moment(value.date).format('MMMM Do YYYY, h:mm:ss a'),
+				moment.duration(moment(value.date).diff(moment(), 'days')) + ' ngày'
 			];
 		});
 	// console.log(typeof(loanList));
-	loanList.unshift(['ID', 'Tên sách', 'Ngày mượn']);
+	loanList.unshift(['ID', 'Tên sách', 'Ngày mượn', 'Số ngày đã qua']);
 	// console.log(loanList);
 	console.log(table(loanList));
 	var answer, index;
@@ -342,7 +348,7 @@ async function loadDatabase() {
 		return new Book(value.id, value.name, value.case, value.available);
 	});
 	loanBooksData = loanBooksData.map(function (value, index, array) {
-		return new LoanBook(value.id, value.playerid, value.date);
+		return new LoanBook(value.id, value.days, value.playerid, value.date);
 	});
 
 	// console.log(userData, caseData, bookData, loanBooksData);
